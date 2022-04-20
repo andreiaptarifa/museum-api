@@ -15,9 +15,9 @@ class MuseumsController < ApplicationController
 
     # 2- validar aos dados inseridos
     def validate_params(lat, lng)
-      valid_lat = lat.present? && lat.between?(-90, 90)
-      valid_lng = lng.present? && lat.between?(-180, 180)
-      return { valid: true, lat: lng:, status: :ok } if valid_lat && valid_lng
+      valid_lat = lat.present? && lat.to_f.between?(-90, 90)
+      valid_lng = lng.present? && lat.to_f.between?(-180, 180)
+      return { valid: true, lat: lat, lng: lng, status: :ok } if valid_lat && valid_lng
 
       return_error_messages(lat, lng, valid_lat, valid_lng)
     end
@@ -33,7 +33,7 @@ class MuseumsController < ApplicationController
         errors << 'Lat must be between -90 and 90' unless valid_lat
         errors << 'Long must be between -180 and 180' unless valid_lng
       end
-      { valid: false, errors:, status: }
+      { valid: false, errors: errors, status: status}
     end
     # 3- retornar erros caso o input esteja incorreto
     # 3.b - lat e long com valores invalidos
