@@ -50,7 +50,7 @@ class MuseumsController < ApplicationController
     def parse_data(data)
       data['features'].each_with_object({}) do |museum, hsh|
         hsh[museum['context'][0]['text']] = [] unless hsh[museum['context'][0]['text']]
-        hsh[museum['context'][0]['text']] << hsh[museum]['text']
+        hsh[museum['context'][0]['text']] << museum['text']
       end
     end
 
