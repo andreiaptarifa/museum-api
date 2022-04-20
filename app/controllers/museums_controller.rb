@@ -33,7 +33,7 @@ class MuseumsController < ApplicationController
         errors << 'Lat must be between -90 and 90' unless valid_lat
         errors << 'Long must be between -180 and 180' unless valid_lng
       end
-      { valid: false, errors: errors, status: status}
+      { valid: false, errors: errors, status: status }
     end
     # 3- retornar erros caso o input esteja incorreto
     # 3.b - lat e long com valores invalidos
