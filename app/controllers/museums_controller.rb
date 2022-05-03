@@ -11,6 +11,8 @@ class MuseumsController < ApplicationController
     end
   end
 
+
+
   private
 
     # 2- validar aos dados inseridos
